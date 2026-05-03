@@ -1,17 +1,6 @@
 import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
-import { withBotId } from "botid/next/config";
-import withBundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizePackageImports: ["lucide-react", "date-fns", "lodash", "@radix-ui/react-icons", "recharts", "lightweight-charts", "next-intl/server"],
-  },
-
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
-
   async headers() {
     return [
       {
@@ -89,29 +78,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  images: {
-    minimumCacheTTL: 0,
-    formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "lh3.googleusercontent.com" },
-      { protocol: "https", hostname: "randomuser.me" },
-      { protocol: "https", hostname: "inlnpazfunssixvorztn.supabase.co" },
-      { protocol: "https", hostname: "tycccztwtuaemnjxsprh.supabase.co" },
-      { protocol: "https", hostname: "img.youtube.com" },
-      { protocol: "https", hostname: "saras-alpha.s3.ap-northeast-1.amazonaws.com" },
-      { protocol: "https", hostname: "img.logo.dev" },
-      { protocol: "https", hostname: "yumisandbox-production.up.railway.app", pathname: "/api/ticket/get_attachment" },
-      { protocol: "https", hostname: "yumisandboxstag-production.up.railway.app", pathname: "/api/ticket/get_attachment" },
-      { protocol: "https", hostname: "yumisandboxprod-production.up.railway.app", pathname: "/api/ticket/get_attachment" },
-      { protocol: "https", hostname: "orion-alpha.s3.ap-northeast-1.amazonaws.com" },
-      { protocol: "https", hostname: "orion-alpha.s3.amazonaws.com" },
-      { protocol: "https", hostname: "d2zcsk381dfhpi.cloudfront.net" },
-      { protocol: "https", hostname: "cdn.aiwork.app", pathname: "/images/**" },
-      { protocol: "https", hostname: "cdn.aiwork.app", pathname: "/ticker-logos/**" },
-      { protocol: "https", hostname: "cdn.aiwork.app", pathname: "/covers/**" },
-    ],
-  },
 };
 
 const withNextIntl = createNextIntlPlugin();
