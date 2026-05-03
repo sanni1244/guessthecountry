@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/theme",
+        source: "/(theme|report|screener|subscribe|index|)",
         headers: [
           {
             key: "Cache-Control",
@@ -30,59 +30,8 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/report",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=3600",
-          },
-        ],
-      },
-      {
-        source: "/screener",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=3600",
-          },
-        ],
-      },
-      {
-        source: "/subscribe",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=3600",
-          },
-        ],
-      },
-      {
-        source: "/",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=3600",
-          },
-        ],
-      },
-      {
-        source: "/index",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=3600",
-          },
-        ],
-      },
     ];
   },
-
 };
 
-const withNextIntl = createNextIntlPlugin();
-const analyze = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
-
-export default analyze(withBotId(withNextIntl(nextConfig)));
+export default nextConfig;
